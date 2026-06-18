@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sky: #5bb8e8;
+  --color-sky-soft: #dcefea;
+  --color-blush: #f4a8c0;
+  --color-blush-soft: #fce4ec;
+  --color-mint: #8fd18a;
+  --color-mint-soft: #e5f5e2;
+  --color-sun: #f7ce54;
+  --color-sun-soft: #fcefc7;
+  --color-cream: #faf7f2;
+  --color-ink: #232838;
+  --color-ink-soft: #5b6172;
+
+  --font-display: var(--font-nunito);
+  --font-sans: var(--font-nunito);
+
+  --radius-3xl: 1.75rem;
+  --radius-4xl: 2.25rem;
+
+  --shadow-soft: 0 24px 60px -28px rgba(35, 40, 56, 0.18);
+  --shadow-card: 0 12px 36px -18px rgba(35, 40, 56, 0.22);
+  --shadow-button: 0 12px 24px -12px rgba(91, 184, 232, 0.55);
+}
+
+:root {
+  --background: #faf7f2;
+  --foreground: #232838;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-nunito), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #dcefea;
+  color: #232838;
+}
+
+.bg-dot-grid {
+  background-image: radial-gradient(
+    rgba(91, 184, 232, 0.18) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(6deg); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+@keyframes drift {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(8px) translateY(-6px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.animate-float-slower { animation: float-slower 9s ease-in-out infinite; }
+.animate-twinkle { animation: twinkle 3.2s ease-in-out infinite; }
+.animate-drift { animation: drift 10s ease-in-out infinite; }
+
+/* Hide scrollbar but keep functionality (used for product thumb rails) */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
