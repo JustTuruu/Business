@@ -70,8 +70,8 @@ const sharedToothbrushSpecs: Spec[] = [
 
 const sharedToothbrushPackage = [
   "Сойзны бие × 1",
-  "U хэлбэрийн үзүүр × 2 ",
-  "PBT зөөлөн хялгасан үзүүр × 2",
+  "U хэлбэртэй толгой × 2 ",
+  "PBT зөөлөн хялгасан үстэй толгой × 2",
   "USB цэнэглэгч кабель × 1",
 ];
 
