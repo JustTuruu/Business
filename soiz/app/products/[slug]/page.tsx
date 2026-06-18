@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  ArrowLeft,
   ArrowRight,
   CheckCircle2,
   MessageCircle,
   Package,
   ShieldCheck,
+  ShoppingBag,
   Sparkles,
 } from "lucide-react";
 import {
@@ -167,8 +167,8 @@ export default async function ProductDetailPage({
                   target="_blank"
                   size="lg"
                 >
-                  Захиалга өгөх
-                  <ArrowRight className="w-4 h-4" />
+                  <ShoppingBag className="w-4 h-4" />
+                  Захиалах
                 </Button>
                 <Button href="/contact" variant="outline" size="lg">
                   Холбоо барих

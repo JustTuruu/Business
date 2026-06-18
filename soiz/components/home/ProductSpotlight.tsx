@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShoppingBag } from "lucide-react";
 import { Container } from "../Container";
 import { Eyebrow } from "../Section";
+import { SITE_INFO } from "@/lib/products";
 
 interface Row {
   eyebrow: string;
@@ -97,13 +98,24 @@ export function ProductSpotlight() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href={r.href}
-                  className={`mt-7 inline-flex items-center gap-1.5 font-bold ${r.accent}`}
-                >
-                  Дэлгэрэнгүй
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                <div className="mt-7 flex flex-wrap items-center gap-3">
+                  <a
+                    href={SITE_INFO.orderUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-ink text-white px-5 h-11 text-[15px] font-bold hover:bg-ink/90 transition-colors shadow-[var(--shadow-button)]"
+                  >
+                    <ShoppingBag className="w-4 h-4" />
+                    Захиалах
+                  </a>
+                  <Link
+                    href={r.href}
+                    className={`inline-flex items-center gap-1.5 font-bold ${r.accent}`}
+                  >
+                    Дэлгэрэнгүй
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
             </article>
           ))}

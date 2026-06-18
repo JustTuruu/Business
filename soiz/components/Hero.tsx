@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, ShoppingBag, Sparkles } from "lucide-react";
 import { Button } from "./Button";
 import { Container } from "./Container";
 import { SkyBackdrop, Sparkle, StarDot } from "./Decor";
 import { Badge } from "./Badge";
+import { SITE_INFO } from "@/lib/products";
 
 export function Hero() {
   return (
@@ -50,12 +51,13 @@ export function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <Button href="/products" size="lg">
+              <Button href={SITE_INFO.orderUrl} target="_blank" size="lg">
+                <ShoppingBag className="w-4 h-4" />
+                Захиалах
+              </Button>
+              <Button href="/products" variant="outline" size="lg">
                 Бүтээгдэхүүн үзэх
                 <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button href="/contact" variant="outline" size="lg">
-                Холбоо барих
               </Button>
             </div>
 

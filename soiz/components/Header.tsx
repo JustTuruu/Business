@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, ShoppingBag, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { Button } from "./Button";
+import { SITE_INFO } from "@/lib/products";
 
 const navLinks = [
   { href: "/", label: "Нүүр" },
@@ -74,8 +75,9 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Button href="/contact" size="md">
-            Холбоо барих
+          <Button href={SITE_INFO.orderUrl} target="_blank" size="md">
+            <ShoppingBag className="w-4 h-4" />
+            Захиалах
           </Button>
         </div>
 
@@ -133,8 +135,13 @@ export function Header() {
               );
             })}
             <div className="mt-3">
-              <Button href="/contact" className="w-full">
-                Холбоо барих
+              <Button
+                href={SITE_INFO.orderUrl}
+                target="_blank"
+                className="w-full"
+              >
+                <ShoppingBag className="w-4 h-4" />
+                Захиалах
               </Button>
             </div>
           </nav>

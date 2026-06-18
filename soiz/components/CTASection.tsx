@@ -1,4 +1,4 @@
-import { ArrowRight, Phone } from "lucide-react";
+import { Phone, ShoppingBag } from "lucide-react";
 import { Button } from "./Button";
 import { Container } from "./Container";
 import { Sparkle, StarDot } from "./Decor";
@@ -22,11 +22,12 @@ const tones = {
 export function CTASection({
   title = "Гялалзсан цагаан Хүүхдийн шүд цэвэрхэн",
   description = "Захиалах бол энд дарна уу холбоо барих дээр дарна уу.",
-  primaryLabel = "Холбоо барих",
-  primaryHref = "/contact",
+  primaryLabel = "Захиалах",
+  primaryHref = SITE_INFO.orderUrl,
   tone = "sky",
   className = "",
 }: CTASectionProps) {
+  const isExternalPrimary = /^https?:\/\//.test(primaryHref);
   return (
     <section className={`relative py-16 sm:py-20 ${className}`}>
       <Container>
@@ -62,12 +63,13 @@ export function CTASection({
             <div className="flex flex-wrap gap-4 lg:justify-end">
               <Button
                 href={primaryHref}
+                target={isExternalPrimary ? "_blank" : undefined}
                 variant="secondary"
                 size="lg"
                 className="bg-white text-sky hover:bg-white/95"
               >
+                <ShoppingBag className="w-4 h-4" />
                 {primaryLabel}
-                <ArrowRight className="w-4 h-4" />
               </Button>
               <a
                 href={`tel:${SITE_INFO.phoneRaw}`}
