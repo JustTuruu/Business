@@ -26,6 +26,7 @@ export interface Product {
   packageContents: string[];
   heroImage: string;
   images: string[];
+  comingSoon?: boolean;
 }
 
 const sharedToothbrushFeatures: Feature[] = [
@@ -73,6 +74,7 @@ const sharedToothbrushPackage = [
   "U хэлбэртэй толгой × 2 ",
   "PBT зөөлөн хялгасан үстэй толгой × 2",
   "USB цэнэглэгч кабель × 1",
+  "Хүүхдийн хөвсөн оо (тарвасны амт) × 1",
 ];
 
 const brushDescription = [
@@ -88,7 +90,7 @@ export const products: Product[] = [
     name: "Astronaut - Цэнхэр",
     category: "toothbrush",
     themeColor: "sky",
-    badge: "Бестселлер",
+    badge: "Тун удахгүй",
     ageRange: "2–8 нас",
     tagline: "Сансрын аялалд урих цэнхэр нисэгч сойз",
     shortDescription:
@@ -103,6 +105,7 @@ export const products: Product[] = [
       "/blue/4 copy.png",
       "/blue/PNG image copy.png",
     ],
+    comingSoon: true,
   },
   {
     id: "p-white",

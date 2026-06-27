@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import { type Product, themeStyles } from "@/lib/products";
 
 interface ProductCardProps {
@@ -10,6 +10,9 @@ interface ProductCardProps {
 
 export function ProductCard({ product, priority = false }: ProductCardProps) {
   const t = themeStyles[product.themeColor];
+  const badgeClass = product.comingSoon
+    ? "bg-ink text-white"
+    : t.badge;
 
   return (
     <Link
@@ -25,7 +28,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         />
         {product.badge && (
           <span
-            className={`absolute top-4 left-4 z-10 inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold ${t.badge}`}
+            className={`absolute top-4 left-4 z-10 inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold ${badgeClass}`}
           >
             {product.badge}
           </span>
@@ -33,6 +36,13 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         <span className="absolute top-4 right-4 z-10 inline-flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-ink-soft">
           {product.ageRange}
         </span>
+        {product.comingSoon && (
+          <div className="absolute inset-0 z-10 grid place-items-center bg-white/55 backdrop-blur-[1px]">
+            <span className="rounded-full bg-ink/90 text-white px-4 py-1.5 text-sm font-extrabold tracking-wide">
+              Тун удахгүй
+            </span>
+          </div>
+        )}
         <Image
           src={product.heroImage}
           alt={product.name}
@@ -49,6 +59,12 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         <p className="text-sm text-ink-soft leading-relaxed line-clamp-3">
           {product.shortDescription}
         </p>
+        {product.category === "toothbrush" && (
+          <span className="inline-flex items-center gap-1.5 self-start rounded-full bg-mint-soft text-mint px-2.5 py-1 text-xs font-bold">
+            <Sparkles className="w-3.5 h-3.5" />
+            Шүдний оо дагалдана
+          </span>
+        )}
         <div className="mt-2 flex items-center justify-between">
           <span className={`text-sm font-bold ${t.text}`}>
             Дэлгэрэнгүй

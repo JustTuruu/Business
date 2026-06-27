@@ -4,11 +4,14 @@ import { notFound } from "next/navigation";
 import {
   ArrowRight,
   CheckCircle2,
+  Clock,
+  Gift,
   MessageCircle,
   Package,
   ShieldCheck,
   ShoppingBag,
   Sparkles,
+  Truck,
 } from "lucide-react";
 import {
   getProductBySlug,
@@ -146,30 +149,72 @@ export default async function ProductDetailPage({
                 </div>
               )}
 
-              <div className="rounded-3xl bg-cream border border-ink/5 p-5 sm:p-6 flex items-start gap-4">
-                <span className="grid place-items-center w-11 h-11 rounded-2xl bg-sky-soft text-sky shrink-0">
-                  <MessageCircle className="w-5 h-5" />
-                </span>
-                <div>
-                  <p className="font-bold text-ink">
-                    Үнэ, хүргэлтийн талаар лавлах уу?
-                  </p>
-                  <p className="text-sm text-ink-soft mt-1">
-                    Захиалга, нөөц, хүргэлтийн мэдээллийг манай борлуулагч
-                    яаралтай мэдээлнэ.
-                  </p>
+              {product.category === "toothbrush" ? (
+                <div className="rounded-3xl bg-cream border border-ink/5 p-5 sm:p-6">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl sm:text-4xl font-extrabold text-ink leading-none">
+                      59,000₮
+                    </span>
+                  </div>
+                  <ul className="mt-4 grid sm:grid-cols-2 gap-2.5">
+                    <li className="flex items-start gap-2.5 text-[15px] text-ink">
+                      <Truck className="w-5 h-5 mt-0.5 shrink-0 text-sky" />
+                      <span className="font-semibold">Хүргэлт үнэгүй</span>
+                    </li>
+                    <li className="flex items-start gap-2.5 text-[15px] text-ink">
+                      <Gift className="w-5 h-5 mt-0.5 shrink-0 text-mint" />
+                      <span className="font-semibold">Шүдний оо бэлэгт</span>
+                    </li>
+                  </ul>
                 </div>
-              </div>
+              ) : (
+                <div className="rounded-3xl bg-cream border border-ink/5 p-5 sm:p-6 flex items-start gap-4">
+                  <span className="grid place-items-center w-11 h-11 rounded-2xl bg-sky-soft text-sky shrink-0">
+                    <MessageCircle className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <p className="font-bold text-ink">
+                      Үнэ, хүргэлтийн талаар лавлах уу?
+                    </p>
+                    <p className="text-sm text-ink-soft mt-1">
+                      Захиалга, нөөц, хүргэлтийн мэдээллийг манай борлуулагч
+                      яаралтай мэдээлнэ.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {product.comingSoon && (
+                <div className="rounded-3xl bg-ink text-white p-5 sm:p-6 flex items-start gap-4">
+                  <span className="grid place-items-center w-11 h-11 rounded-2xl bg-white/15 text-white shrink-0">
+                    <Clock className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <p className="font-extrabold">Тун удахгүй ирнэ</p>
+                    <p className="text-sm text-white/80 mt-1">
+                      Энэ өнгийн нөөц одоогоор дууссан байна. Захиалга авч,
+                      ирмэгц анхны ээлжид мэдэгдэх боломжтой.
+                    </p>
+                  </div>
+                </div>
+              )}
 
               <div className="flex flex-wrap gap-3 pt-2">
-                <Button
-                  href={SITE_INFO.orderUrl}
-                  target="_blank"
-                  size="lg"
-                >
-                  <ShoppingBag className="w-4 h-4" />
-                  Захиалах
-                </Button>
+                {product.comingSoon ? (
+                  <Button href="/contact" variant="outline" size="lg">
+                    <Clock className="w-4 h-4" />
+                    Урьдчилан захиалах
+                  </Button>
+                ) : (
+                  <Button
+                    href={SITE_INFO.orderUrl}
+                    target="_blank"
+                    size="lg"
+                  >
+                    <ShoppingBag className="w-4 h-4" />
+                    Захиалах
+                  </Button>
+                )}
                 <Button href="/contact" variant="outline" size="lg">
                   Холбоо барих
                 </Button>
